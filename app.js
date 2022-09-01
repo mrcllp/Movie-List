@@ -104,5 +104,5 @@ if(title === '' || director === '' || year === '') {
 document.querySelector('#movie-list').addEventListener('click', (e) => {
     UI.deleteMovie(e.target);
 
-    UI.showAlert('Movie Deleted', 'danger')
+    UI.showAlert('Movie Removed', 'danger')
 });
