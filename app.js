@@ -11,14 +11,14 @@ class UI {
     static displayMovies() {
         const StoredMovies = [
             {
-                title: 'Movie 1',
-                director: 'Director1',
-                year: '123123',
+                title: 'The Lord of The Rings The Return of The King',
+                director: 'Peter Jackson',
+                year: '2003',
             },
             {
-                title: 'Movie 2',
-                director: 'Director2',
-                year: '124124',
+                title: 'American Pie',
+                director: ' Paul Weitz',
+                year: '1999',
             },
         ];
 
@@ -40,7 +40,27 @@ class UI {
         `;
 
         list.appendChild(row);
-        
+    }
+
+    static deleteMovie(el) {
+        if(el.classList.contains('delete')) {
+            el.parentElement.parentElement.remove();
+        }
+    }
+
+    static showAlert(message, className) {
+        const div = document.createElement('div');
+        div.className = `alert alert-${className}`;
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector('.container');
+        const form = document.querySelector('#movie-form');
+        container.insertBefore(div, form);
+    }
+
+    static clearFields() {
+        document.querySelector('#title').value = '';
+        document.querySelector('#director').value = '';
+        document.querySelector('#year').value = '';
     }
 }
 // Store Class: Handles Storage
@@ -48,23 +68,35 @@ class UI {
 // Event: Display Movies
 document.addEventListener('DOMContentLoaded', UI.displayMovies);
 
-console.log('row');
 // Event: Add a movie
 document.querySelector('#movie-form').addEventListener('submit', (e) => {
+
 // Prevent actual Submit
 e.preventDefault();
-
 
 // Get form values
 const title = document.querySelector('#title').value;
 const director = document.querySelector('#director').value;
 const year = document.querySelector('#year').value;
 
-// Instantiate Movie 
-const movie = new Movie(title, director, year);
 
-console.log(movie)
+// Validate
 
+if(title === '' || director === '' || year === '') {
+    UI.showAlert('You cannot leave empty fields', 'danger')
+} else {
+    // Instatiate movie 
+    const movie = new Movie(title, director, year);
 
+    // Add Movie to UI 
+    UI.addMovieToList(movie);
+
+    // Clear Fields
+    UI.clearFields();
+    }
 });
+
 // Event: Remove a book 
+document.querySelector('#movie-list').addEventListener('click', (e) => {
+    UI.deleteMovie(e.target);
+});
