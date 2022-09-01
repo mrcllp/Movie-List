@@ -55,6 +55,8 @@ class UI {
         const container = document.querySelector('.container');
         const form = document.querySelector('#movie-form');
         container.insertBefore(div, form);
+        //Vanish in 3 seconds
+        setTimeout(() => document.querySelector('.alert').remove(), 3000)
     }
 
     static clearFields() {
@@ -91,12 +93,16 @@ if(title === '' || director === '' || year === '') {
     // Add Movie to UI 
     UI.addMovieToList(movie);
 
+    // Show Added Message
+    UI.showAlert('Movie Added', 'success')
     // Clear Fields
     UI.clearFields();
-    }
+    }   
 });
 
 // Event: Remove a book 
 document.querySelector('#movie-list').addEventListener('click', (e) => {
     UI.deleteMovie(e.target);
+
+    UI.showAlert('Movie Deleted', 'danger')
 });
