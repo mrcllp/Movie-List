@@ -2,7 +2,7 @@
 class Movie {
     constructor(title, director, year) {
         this.title = title;
-        this.author = director;
+        this.director = director;
         this.year = year;
     }
 }
@@ -13,12 +13,12 @@ class UI {
             {
                 title: 'Movie 1',
                 director: 'Director1',
-                year: '123123'
+                year: '123123',
             },
             {
                 title: 'Movie 2',
                 director: 'Director2',
-                year: '124124'
+                year: '124124',
             },
         ];
 
@@ -29,12 +29,42 @@ class UI {
 
     static addMovieToList(movie) {
         const list = document.querySelector('#movie-list');
+
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${movie.title}</td>
+            <td>${movie.director}</td>
+            <td>${movie.year}</td>
+            <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
+        `;
+
+        list.appendChild(row);
+        
     }
 }
 // Store Class: Handles Storage
 
-// Event: Display Books
+// Event: Display Movies
+document.addEventListener('DOMContentLoaded', UI.displayMovies);
 
-// Event: Add a book 
+console.log('row');
+// Event: Add a movie
+document.querySelector('#movie-form').addEventListener('submit', (e) => {
+// Prevent actual Submit
+e.preventDefault();
 
+
+// Get form values
+const title = document.querySelector('#title').value;
+const director = document.querySelector('#director').value;
+const year = document.querySelector('#year').value;
+
+// Instantiate Movie 
+const movie = new Movie(title, director, year);
+
+console.log(movie)
+
+
+});
 // Event: Remove a book 
