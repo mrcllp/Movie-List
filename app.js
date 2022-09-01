@@ -25,8 +25,10 @@ class UI {
         const movies = StoredMovies;
 
         movies.forEach((movie) => UI.addMovieToList(movie));
+    }
 
-
+    static addMovieToList(movie) {
+        const list = document.querySelector('#movie-list');
     }
 }
 // Store Class: Handles Storage
