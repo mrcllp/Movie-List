@@ -9,20 +9,7 @@ class Movie {
 // Ui class: Handle us tasks
 class UI {
     static displayMovies() {
-        const StoredMovies = [
-            {
-                title: 'The Lord of The Rings The Return of The King',
-                director: 'Peter Jackson',
-                year: '2003',
-            },
-            {
-                title: 'American Pie',
-                director: ' Paul Weitz',
-                year: '1999',
-            },
-        ];
-
-        const movies = StoredMovies;
+        const movies = Store.getMovies();
 
         movies.forEach((movie) => UI.addMovieToList(movie));
     }
@@ -66,6 +53,36 @@ class UI {
     }
 }
 // Store Class: Handles Storage
+class Store {
+    static getMovies() {
+        let movies;
+        if(localStorage.getItem('movies') === null) {
+            movies = [];
+        } else {
+            movies = JSON.parse(localStorage.getItem('movies'));
+        }
+        return movies;
+    }
+
+    static addMovie(movie) {
+        const movies = Store.getMovies();
+
+        movies.push(movie);
+
+        localStorage.setItem('movies', JSON.stringify(movies));
+    }
+    static removeMovie(title) {
+        const movies = Store.getMovies();
+
+        movies.forEach((movie, index) => {
+        if(movie.title === title){
+            movies.splice(index, 1);
+        }
+        });
+
+        localStorage.setItem('movies', JSON.stringify(movies));
+    }
+}
 
 // Event: Display Movies
 document.addEventListener('DOMContentLoaded', UI.displayMovies);
@@ -93,6 +110,9 @@ if(title === '' || director === '' || year === '') {
     // Add Movie to UI 
     UI.addMovieToList(movie);
 
+    // Add movie to store
+    Store.addMovie(movie);
+
     // Show Added Message
     UI.showAlert('Movie Added', 'success')
     // Clear Fields
@@ -100,9 +120,13 @@ if(title === '' || director === '' || year === '') {
     }   
 });
 
-// Event: Remove a book 
+// Event: Remove a Movie
 document.querySelector('#movie-list').addEventListener('click', (e) => {
     UI.deleteMovie(e.target);
-
+// Show Remove Message
     UI.showAlert('Movie Removed', 'danger')
+
+
+// Remove Movie from Store
+    Store.removeMovie(e.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.textContent);
 });
