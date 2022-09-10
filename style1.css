@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bilbo&family=Karla:wght@400;700&family=Libre+Franklin:wght@300;600;700&family=Manrope:wght@700&family=Open+Sans:wght@300&family=Outfit:wght@300;400;600&family=Overpass:wght@400;700&family=Roboto:ital,wght@0,400;1,300;1,400&display=swap');
 
 :root {
   --primary-color: #22254b;
@@ -11,7 +12,7 @@
 
 body {
   background-color: var(--primary-color);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Limelight', sans-serif;
   margin: 0;
 }
 
@@ -47,10 +48,14 @@ body {
   color: #7378c5;
 }
 
+
+
+
 .search:focus {
   outline: none;
   background-color: var(--primary-color);
 }
+
 
 main {
   display: flex;
@@ -59,7 +64,7 @@ main {
 }
 
 .movie {
-  width: 200px;
+  width: 290px;
   margin: 1rem;
   background-color: #593196;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
@@ -131,7 +136,7 @@ main {
 .fav-btn {
   border: none;
   padding: 10px;
-  margin-left: 80px;
+  margin-left: 126px;
   background-color: transparent;
   color:  rgb(230, 230, 230);
   cursor: pointer;

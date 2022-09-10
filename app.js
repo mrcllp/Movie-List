@@ -176,7 +176,7 @@ function showMovies(movies) {
             <div class="movie-info">
             <h6>${release_date}<h/6>
           <h3>${title}</h3>
-          <span class="${getClassByRate(vote_average)}">${vote_average}</span>
+          <span class="${getClassByRate(vote_average)}">Score: ${vote_average}</span>
             </div>
             <div class="overview">
           <h3>Overview</h3>
