@@ -9,7 +9,7 @@ class Movie {
         this.year = year;
     }
 }
-// Ui class: Handle us tasks
+// Ui class: Handle ui tasks
 class UI {
     static displayMovies() {
         const movies = Store.getMovies();
@@ -19,7 +19,6 @@ class UI {
 
     static addMovieToList(movie) {
         const list = document.querySelector('#movie-list');
-
         const row = document.createElement('tr');
 
         row.innerHTML = `
@@ -28,7 +27,8 @@ class UI {
             <td>${movie.year}</td>
             <td><a href="#" class="btn btn-danger btn-sm delete">X</a></td>
         `;
-
+        
+       
         list.appendChild(row);
     }
 
@@ -73,6 +73,10 @@ class Store {
         movies.push(movie);
 
         localStorage.setItem('movies', JSON.stringify(movies));
+
+        btn.addEventListener('click', () => {
+            console.log('click');
+        })
     }
     static removeMovie(title) {
         const movies = Store.getMovies();
@@ -101,6 +105,7 @@ const title = document.querySelector('#title').value;
 const director = document.querySelector('#director').value;
 const year = document.querySelector('#year').value;
 
+const btn = document.getElementsByClassName('fav-butn')
 
 // Validate
 
@@ -151,7 +156,7 @@ getMovies(API_URL)
 async function getMovies(url) {
     const res = await fetch(url)
     const data = await res.json()
-
+    console.log(data.results)
     showMovies(data.results)
 }
 
@@ -159,14 +164,17 @@ function showMovies(movies) {
     main.innerHTML = ''
 
     movies.forEach((movie) => {
-        const { title, poster_path, vote_average, overview } = movie
-
+        const { title, poster_path, release_date, vote_average, overview } = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie')
 
         movieEl.innerHTML = `
+            <button class="fav-btn">
+                <i class="fas fa-heart"></i>
+            </button>
             <img src="${IMG_PATH + poster_path}" alt="${title}">
             <div class="movie-info">
+            <h6>${release_date}<h/6>
           <h3>${title}</h3>
           <span class="${getClassByRate(vote_average)}">${vote_average}</span>
             </div>
@@ -175,7 +183,9 @@ function showMovies(movies) {
           ${overview}
         </div>
         `
+  
         main.appendChild(movieEl)
+        
     })
 }
 
@@ -201,5 +211,6 @@ form.addEventListener('submit', (e) => {
     } else {
         window.location.reload()
     }
+
 })
 
