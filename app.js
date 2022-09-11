@@ -1,5 +1,4 @@
 
-
 // Movie List Previous project 
 
 class Movie {
@@ -105,7 +104,6 @@ const title = document.querySelector('#title').value;
 const director = document.querySelector('#director').value;
 const year = document.querySelector('#year').value;
 
-const btn = document.getElementsByClassName('fav-butn')
 
 // Validate
 
@@ -140,7 +138,7 @@ document.querySelector('#movie-list').addEventListener('click', (e) => {
     UI.showAlert('Movie Removed', 'danger')
 });
 
-
+// API Seciton
 
 const API_URL = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=3fd2be6f0c70a2a598f084ddfb75487c&page=1'
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280'
@@ -214,3 +212,10 @@ form.addEventListener('submit', (e) => {
 
 })
 
+const container = document.getElementsByClassName('movie');
+
+for (const item of movie) {
+    const button = document.createElement('fas fa-heart');
+    button.className = 'fas fa-heart'
+    item.append(button);
+}

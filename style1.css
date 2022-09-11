@@ -35,29 +35,29 @@ body {
 
 .search {
   background-color: transparent;
+  height: 20%;
   text-align: center;
-  max-width: 50%;
-  border: 2px solid #593196;
+  width: 50%;
+  max-width: 100%;
+  border: 2px solid #1a1a1a;
   border-radius: 50px;
   font-family: inherit;
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  color: #fff;
+  color: #1a1a1a;
 }
 
 
 
 .search::placeholder {
-  color: #7378c5;
+  color: rgb(100, 97, 97);
 }
 
 
-
-
-.search:focus {
+/* .search:focus {
   outline: none;
-  background-color: var(--primary-color);
-}
+  background-color: #eb6964b0;
+} */
 
 
 main {
@@ -69,7 +69,7 @@ main {
 .movie {
   width: 290px;
   margin: 1rem;
-  background-color: #593196;
+  background-color: #1a1a1a;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
@@ -95,6 +95,7 @@ main {
 .movie-info h3 {
   margin-top: 0;
   margin: 5px;
+  color: white;
 }
 
 .movie-info span {
@@ -112,7 +113,7 @@ main {
 }
 
 .movie-info span.orange {
-  color: orange;
+  color: rgb(253, 222, 163);
 }
 
 .movie-info span.red {
@@ -151,5 +152,5 @@ main {
 }
 
 .fav-btn:hover {
-  color: #b190e4;
+  color: #e2322c;
 }
