@@ -37,27 +37,30 @@ body {
   background-color: transparent;
   height: 20%;
   text-align: center;
-  width: 50%;
+  width: 26%;
   max-width: 100%;
-  border: 2px solid #1a1a1a;
+  border: 1px solid #1a1a1a;
   border-radius: 50px;
   font-family: inherit;
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  color: #1a1a1a;
+  color: #000000;
 }
 
 
 
 .search::placeholder {
-  color: rgb(100, 97, 97);
+  color: black;
+}
+
+.search:focus {
+  background-color: #e4dcdcb4;
 }
 
 
-/* .search:focus {
-  outline: none;
-  background-color: #eb6964b0;
-} */
+#submit:hover {
+  opacity: 0.9;
+}
 
 
 main {

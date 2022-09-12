@@ -167,6 +167,7 @@ function showMovies(movies) {
         movieEl.classList.add('movie')
 
         movieEl.innerHTML = `
+        
             <button class="fav-btn">
                 <i class="fas fa-heart"></i>
             </button>
@@ -181,11 +182,15 @@ function showMovies(movies) {
           ${overview}
         </div>
         `
+
+       
   
         main.appendChild(movieEl)
         
     })
 }
+
+
 
 function getClassByRate(vote) {
     if(vote >= 8) {
