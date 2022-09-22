@@ -224,3 +224,4 @@ for (const item of movie) {
     button.className = 'fas fa-heart'
     item.append(button);
 }
+
